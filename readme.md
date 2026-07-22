@@ -13,4 +13,4 @@ This repository contains all scripts used to preprocess input data, run analyses
 - `2-analysis-and-plots/` — generates figures and summary statistics
 
 ### Contact
-Xander Huggins - [https://orcid.org/XXXX-XXXX-XXXX-XXXX](https://orcid.org/0000-0002-6313-8299)
+Xander Huggins - [https://orcid.org/0000-0002-6313-8299](https://orcid.org/0000-0002-6313-8299)
