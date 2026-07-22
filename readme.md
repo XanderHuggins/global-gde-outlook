@@ -1,16 +1,16 @@
 # Global GDE outlook repository
 
-This is the code repository associated with the manuscript: "Groundwater-dependent ecosystems are missing from global research and policy agendas" - Huggins et al. (in review).
+This is the code repository accomapying the manuscript: 
+"Groundwater-dependent ecosystems are missing from global research and policy agendas" - Huggins, X., Rohde, M. M., Reinecke, R., Gnann, S., Saccò, M., Hose, G. C., Stella, J. C. & Kløve, B. *In review*.
 
-This repository includes all scripts necessary to preprocess input data to reproduce figures and conclusions.
+This repository contains all scripts used to preprocess input data, run analyses, and generate the figures presented in the manuscript.
 
-**`\Scripts` folder sub-structure**: 
-<br/> 
-- `on_button.R`: Calls the `here()` function and sources scripts in the `\00-setup` folder. 
-- `\00-steup`: Loads required packages, sets package options, etc. 
-- `\1-preprocessing`: contains all preprocessing scripts to harmonize data to a common resolution. 
-- `\2-analysis-and-plots`: contains all scripts to generate figures and related discussion points. <br/>
+### Repository structure
+- `on_button.R` — calls the `here()` function (sets project root) and sources `00-setup/`
+- `00-setup/` — loads required packages and sets global options
+- `0-functions/` — custom functions called throughout the analysis
+- `1-preprocessing/` — harmonises input datasets to a common grid and resolution
+- `2-analysis-and-plots/` — generates figures and summary statistics
 
-For any questions about this repository, please contact: <br/> 
-Xander Huggins <br/> 
-[xander.huggins\@ubc.ca](mailto:xander.huggins@ubc.ca){.email} 
+### Contact
+Xander Huggins - [https://orcid.org/XXXX-XXXX-XXXX-XXXX](https://orcid.org/0000-0002-6313-8299)
