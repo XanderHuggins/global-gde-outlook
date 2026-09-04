@@ -1,6 +1,6 @@
 ## Global GDE outlook repository
 
-This is the code repository accompanying the manuscript: **"Groundwater-dependent ecosystems are missing from global research and policy agendas"** — Huggins, X., Rohde, M. M., Reinecke, R., Gnann, S., Saccò, M., Hose, G. C., Stella, J. C. & Kløve, B. *In review.*
+This is the code repository accompanying the manuscript: **"Groundwater-dependent ecosystems are missing from global research and policy agendas"**. Huggins, X., Rohde, M. M., Reinecke, R., Gnann, S., Saccò, M., Hose, G. C., Stella, J. C. & Kløve, B. *In review.*
 
 This repository contains all scripts used to preprocess input data, run analyses, and generate the figures presented in the manuscript. The code performs raster harmonisation and spatial summary statistic calculations across several global datasets.
 
