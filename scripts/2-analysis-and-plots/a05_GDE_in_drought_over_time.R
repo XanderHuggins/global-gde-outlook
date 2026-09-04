@@ -1,8 +1,8 @@
 ### ---------------------\\ 
 # Script objective:
-# Evaluate fraction of global GDEs that are under moderate drought from 1970 to 2025
+# Evaluate fraction of global GDEs that are under moderate to severe drought from 1970 to 2025
 ### ---------------------\\
-library(here); source(here(("scripts/on_button.R"))); library(terra); library(readr)
+library(here); source(here(("scripts/on_button.R")))
 ###
 
 area = WGS84_areaRaster(5/60) |> rast()

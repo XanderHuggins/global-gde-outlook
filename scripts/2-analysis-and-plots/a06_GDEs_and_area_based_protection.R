@@ -10,7 +10,7 @@ hu23 = terra::rast("D:/Geodatabase/GDEs/Huggins_2023/gde-map.tif")
 hu23[hu23>1] = 1
 
 # import area raster, necessary for protected percentages
-area_1km = terra::rast("C:/Users/xande/Documents/1.projects-scripts/gde-global-comparison/data/area_raster_30arcsec.tif")
+area_1km = terra::rast("D:/D_documents/1.projects-scripts/global-gde-outlook/data/area_raster_30arcsec.tif")
 
 # multiply by Link et al. 2023 GDE land cover 
 li23 = terra::rasterize(x = terra::vect("D:/Geodatabase/GDEs/Link_2023/GDE_potentials.shp"),
@@ -31,7 +31,7 @@ gde_area_30am = terra::aggregate(x = gde_area,
 names(gde_area_30am) = "gde_area"
 
 # import protected areas estimate
-pas = terra::rast("C:/Users/xande/Documents/1.projects-scripts/global-gde-map/dryland-gde-map/data/wdpa_binary_1km.tif")
+pas = terra::rast("D:/D_documents/1.projects-scripts/global-gde-map/dryland-gde-map/data/wdpa_binary_1km.tif")
 pas[is.na(pas)] = 0
 
 # calculate protected area (not just binary)
@@ -122,10 +122,7 @@ ggplot(plot_df) +
   coord_cartesian(expand = FALSE, xlim = c(0.01, 10), ylim = c(0, 100)) +
   labs(x = "aridity index", 
        y = "GDE area density") +
- 
-  
   theme_void() + theme(legend.position = "none")
-
 
 ggsave(file = here("plots/protection_pct_vs_gde_dens_x_aridity.png"), 
        plot = last_plot(), device = "png", 
@@ -133,7 +130,6 @@ ggsave(file = here("plots/protection_pct_vs_gde_dens_x_aridity.png"),
 
 
 ## Plot rolling average over aridity and GDE area density
-library(zoo)
 
 plot_df$arid_mid = (plot_df$arid_hi + plot_df$arid_lo)/2 
 
@@ -178,7 +174,6 @@ ggsave(file = here("plots/protection_pct_ROLLING_aridity.png"),
 
 ########################
 ## now repeat for GDE area density
-
 
 plot_df$gde_mid = (plot_df$gde_d_lo + plot_df$gde_d_hi)/2 
 

@@ -1,6 +1,6 @@
 ### ---------------------\\ 
 # Script objective:
-# reproject CPI to WGS84 and resample to 0d5
+# reproject CPI to WGS84 and resample 
 ### ---------------------\\
 
 gdalwarp(

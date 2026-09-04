@@ -10,7 +10,7 @@ names(area) = "area"
 
 gde_dens = terra::rast(here("data/GDE_types_hu_for_comparison.tif")) / 
   WGS84_areaRaster(0.5) |> rast()
-gde_dens = terra::resample(x = gde_dens$terr_GDE_area, y = area, "near")
+gde_dens = terra::resample(x = gde_dens$terr_GDE_area, y = area, "near") ## NOTE - toggle this between $terr_GDE_area and $aqua_GDE_area
 
 wtr = terra::rast("D:/Geodatabase/Groundwater/GRT_WTR/LOG_WTR_L_01_5arcmin.tif")
 wtr = terra::resample(x = wtr, y = area, "near")
@@ -42,7 +42,7 @@ wtr_gde_df = stack_df |>
   summarise(total_area = sum(area, na.rm = TRUE),
             .groups = "drop")
 
-# Plot
+# Plot - just exploratory & not included in manuscript
 ggplot(wtr_gde_df, aes(x = wtr_bin, y = gde_bin, fill = total_area)) +
   geom_tile() +
   scale_fill_viridis_c(
@@ -57,7 +57,6 @@ ggplot(wtr_gde_df, aes(x = wtr_bin, y = gde_bin, fill = total_area)) +
     y = "GDE fraction"
   ) +
   theme_minimal()
-
 
 # Percentile ribbon across WTR bins
 ribbon_df = stack_df |>
@@ -76,6 +75,7 @@ ribbon_df = stack_df |>
     .groups = "drop"
   )
 
+# this is the Terrestrial GDE area density against log10(WTR) -- see ## NOTE ## above for how to adjust to Aquatic GDEs
 ggplot(ribbon_df, aes(x = wtr_bin)) +
   geom_hline(yintercept = seq(0, 1, 0.25), color = "grey80", linewidth = 0.5) + 
   geom_vline(xintercept = seq(-2, 2, 1), color = "grey80", linewidth = 0.5) + 
@@ -101,11 +101,11 @@ hu23 = terra::rast("D:/Geodatabase/GDEs/Huggins_2023/hu23_areadens_5m.tif")
 
 flag_r = rast(wtr)
 flag_r[] = NA
-flag_r[wtr < -0.5 & hu23 > 0.50] = 1
+flag_r[wtr < -0.5 & hu23 > (0.50 + (0.1*hu23[] |> (\(x) x[x != 0])() |> sd(na.rm = TRUE)))] = 1 # add a small 0.1sd buffer around 50% for safety
 flag_r = as.factor(flag_r)
 
 # make the map
-outline = terra::vect("C:/Users/xande/Documents/1.projects-scripts/sustainability-puzzles/data/land_mask_polygon.sqlite") |> 
+outline = terra::vect("D:/D_documents/1.projects-scripts/sustainability-puzzles/data/land_mask_polygon.sqlite") |> 
   st_as_sf()
 map =  
   tm_shape(outline, crs = "+proj=robin") +

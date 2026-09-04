@@ -1,6 +1,6 @@
 ### ---------------------\\ 
 # Script objective:
-# Extract and resample precipitation seasonality to 0d5
+# Extract and resample precipitation seasonality
 ### ---------------------\\
 
 # BIO15 = Precipitation Seasonality (Coefficient of Variation)

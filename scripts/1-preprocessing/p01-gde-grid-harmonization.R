@@ -5,6 +5,7 @@
 library(here); source(here(("scripts/on_button.R")))
 ###
 
+# naming convention of global GDE mapping studies
 #ro24 = rohde 2024
 #hu23 = huggins 2023
 #li23 = link 2023
@@ -28,7 +29,7 @@ ro24 = terra::rast("D:/Geodatabase/GDEs/Rohde_2024/D_Data_GDE_AggregatedLayers/G
   
   hu23_area = hu23 * (WGS84_areaRaster(0.5/60) |> rast())
   
-  # for 5m
+  # for 5 arcmin
   hu23_area_5m = terra::aggregate(x = hu23_area, 
                                   fact = 10,
                                   fun = "sum",
@@ -39,7 +40,7 @@ ro24 = terra::rast("D:/Geodatabase/GDEs/Rohde_2024/D_Data_GDE_AggregatedLayers/G
   writeRaster(x = hu23_areadens_5m, 
               filename = "D:/Geodatabase/GDEs/Huggins_2023/hu23_areadens_5m.tif")
   
-  # for 30m
+  # for 30 arcmin
   hu23_area_30m = terra::aggregate(x = hu23_area_5m, 
                                    fact = 6,
                                    fun = "sum",

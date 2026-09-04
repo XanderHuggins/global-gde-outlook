@@ -6,7 +6,14 @@
 # general
 library(tidyverse)
 library(magrittr)
+
+# stats
 library(Hmisc)
+library(pdist)
+library(matrixStats)
+library(rlang)
+library(mgcv)
+library(zoo)
 
 # spatial
 library(raster) 
@@ -16,8 +23,9 @@ library(gdalUtilities)
 
 # plotting
 library(MetBrewer)
+library(ggh4x)
+library(ggforce)
+library(WeightedTreemaps)
 
 # spatial plotting
-library(rnaturalearth)
-library(tmaptools)
 library(tmap)

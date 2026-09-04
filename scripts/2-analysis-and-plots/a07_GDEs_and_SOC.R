@@ -14,7 +14,6 @@ soc_30_60 = terra::rast("D:/Geodatabase/Carbon/soc_30-60cm_mean_5000.tif") * 30
 soc_60_100 = terra::rast("D:/Geodatabase/Carbon/soc_60-100cm_mean_5000.tif") * 40
 soc_100_200 = terra::rast("D:/Geodatabase/Carbon/soc_100-200cm_mean_5000.tif") * 100
 
-
 soc = c(soc_0_5, soc_5_15, soc_15_30, soc_30_60, soc_60_100, soc_100_200) |> sum()
 soc = soc/200
 
@@ -63,7 +62,7 @@ gde_x_soc = hu23_classified + (10*soc_classified)
 
 
 ## make map
-outline = terra::vect("C:/Users/xande/Documents/1.projects-scripts/sustainability-puzzles/data/land_mask_polygon.sqlite") |> 
+outline = terra::vect("D:/D_documents/1.projects-scripts/sustainability-puzzles/data/land_mask_polygon.sqlite") |> 
   st_as_sf()
 
 map =
@@ -112,8 +111,6 @@ tmap_save(map, here("plots/gMAP_SOC_X_GWDensity.pdf"), dpi = 400, units = "in")
 
 
 ### create empirical CDF of global SOC across GDE density bins
-library(zoo)
-
 ecdf_df = c(soc_wgs, 100*hu23, hu23_area) |> 
   as_tibble() |> 
   set_colnames(c('soc', 'gde_dens', 'gde_area')) |> 
